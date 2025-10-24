@@ -37,10 +37,6 @@ spring:
         max-concurrency: 5
     template:
       exchange: exchangeTest
-      routing-key: testKey
-      default-receive-queue: testQueue
-
-logging:
-  level:
-    org.springframework.amqp: INFO
-    ir.example.demo: DEBUG
+#      exchange-type: "direct"
+      exchange-type: "fanout"
+#      exchange-type: "topic"

@@ -14,25 +14,16 @@ public class RabbitConfig {
     @Value("${spring.rabbitmq.template.exchange}")
     private String exchangeName;
 
-    @Value("${spring.rabbitmq.template.default-receive-queue}")
-    private String queueName;
-
-    @Value("${spring.rabbitmq.template.routing-key}")
-    private String routingKey;
+    @Value("${spring.rabbitmq.template.exchange-type}")
+    private String exchangeType;
 
     @Bean
-    public Queue queue() {
-        return new Queue(queueName, true);
-    }
-
-    @Bean
-    public DirectExchange exchange() {
-        return new DirectExchange(exchangeName);
-    }
-
-    @Bean
-    public Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
+    public Exchange exchange() {
+        return switch (exchangeType.toLowerCase()) {
+            case "fanout" -> new FanoutExchange(exchangeName);
+            case "topic" -> new TopicExchange(exchangeName);
+            default -> new DirectExchange(exchangeName);
+        };
     }
 
     @Bean
