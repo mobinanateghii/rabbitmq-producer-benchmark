@@ -30,13 +30,21 @@ spring:
     port: 5672
     username: guest
     password: guest
-    listener:
-      simple:
-        acknowledge-mode: auto
-        concurrency: 1
-        max-concurrency: 5
+    connection:
+      mode: connection
+
+myapp:
+  rabbitmq:
     template:
-      exchange: exchangeTest
-#      exchange-type: "direct"
-      exchange-type: "fanout"
-#      exchange-type: "topic"
+#      exchange: directExchangeTest
+#      exchange-type: direct
+#      routing-key: testKey
+
+      exchange: fanoutExchangeTest
+      exchange-type: fanout
+      routing-key:
+#
+#      exchange: topicExchangeTest
+#      exchange-type: topic
+#      routing-key: testKey
+

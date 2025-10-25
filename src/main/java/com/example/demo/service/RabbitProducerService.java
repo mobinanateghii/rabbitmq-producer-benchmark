@@ -19,10 +19,10 @@ public class RabbitProducerService {
 
     private final MessageService messageService;
 
-    @Value("${spring.rabbitmq.template.exchange}")
+    @Value("${myapp.rabbitmq.template.exchange}")
     private String EXCHANGE_NAME;
 
-    @Value("${spring.rabbitmq.template.routing-key}")
+    @Value("${myapp.rabbitmq.template.routing-key}")
     private String ROUTING_KEY;
 
 

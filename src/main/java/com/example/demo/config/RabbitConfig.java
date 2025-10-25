@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    @Value("${spring.rabbitmq.template.exchange}")
+    @Value("${myapp.rabbitmq.template.exchange}")
     private String exchangeName;
 
-    @Value("${spring.rabbitmq.template.exchange-type}")
+    @Value("${myapp.rabbitmq.template.exchange-type}")
     private String exchangeType;
 
     @Bean

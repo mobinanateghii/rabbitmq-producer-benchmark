@@ -18,6 +18,7 @@ public class RandomNameGenerator {
     private final NameRegistryRepo nameRegistryRepo;
     private Integer totalNameCount;
     private List<NameRegistry> nameRegistries;
+    private Random random = new Random();
 
     public void init(){
         this.nameRegistries = nameRegistryRepo.findAll();
@@ -59,8 +60,6 @@ public class RandomNameGenerator {
      * @param count           the target number of names
      */
     private void sequentialGenerate(Set<String> randomFullNames, Long count) {
-        Random random = new Random();
-
         while (randomFullNames.size() < count) {
             String randFirstName = nameRegistries.get(random.nextInt(totalNameCount)).getFirstName();
             String randMidName = nameRegistries.get(random.nextInt(totalNameCount)).getFirstName();
