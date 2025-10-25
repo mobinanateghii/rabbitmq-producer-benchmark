@@ -30,15 +30,15 @@ public class RabbitProducerService {
         long start = System.currentTimeMillis();
 
         MessageDto message = MessageDto.builder()
-                .content(isBulk ? messageService.getBulkMessage() : messageService.getMessage())
                 .totalStreamCount(messageCount)
                 .build();
         for (int i = 0; i < messageCount; i++) {
+            message.setContent(isBulk ? messageService.getBulkMessage() : messageService.getMessage());
             rabbitTemplate.convertAndSend(EXCHANGE_NAME, ROUTING_KEY, message);
         }
 
         long end = System.currentTimeMillis();
-        log.info("Sequential ::: is bulk={}  => Sent {} messages in {} ms", isBulk, messageCount , (end - start));
+        log.info("Sequential ::: IS_BULK={}, EXCHANGE_NAME={}, ROUTING_KEY={} => Sent {} messages in {} ms", isBulk, EXCHANGE_NAME, ROUTING_KEY, messageCount , (end - start));
     }
 
     public void sendParallel(Long messageCount, boolean isBulk) {

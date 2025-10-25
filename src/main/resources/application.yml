@@ -30,21 +30,21 @@ spring:
     port: 5672
     username: guest
     password: guest
-    connection:
-      mode: connection
+#    connection:
+#      mode: connection
 
 myapp:
   rabbitmq:
     template:
-#      exchange: directExchangeTest
-#      exchange-type: direct
-#      routing-key: testKey
+      exchange: directExchangeTest
+      exchange-type: direct
+      routing-key: testKey
 
-      exchange: fanoutExchangeTest
-      exchange-type: fanout
-      routing-key:
+#      exchange: fanoutExchangeTest
+#      exchange-type: fanout
+#      routing-key:
 #
 #      exchange: topicExchangeTest
 #      exchange-type: topic
-#      routing-key: testKey
+#      routing-key: test.abc
 

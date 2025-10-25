@@ -18,7 +18,7 @@ public class RandomNameGenerator {
     private final NameRegistryRepo nameRegistryRepo;
     private Integer totalNameCount;
     private List<NameRegistry> nameRegistries;
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public void init(){
         this.nameRegistries = nameRegistryRepo.findAll();
